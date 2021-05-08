@@ -1,0 +1,1 @@
+This directory has data structures for the blockchain implementation.
