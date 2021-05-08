@@ -7,15 +7,15 @@
  *
  * Return: pointer to the transaction outputon success, else NULL
  */
-tx_out_t *tx_out_create(uint32_t amount, uint8_t const pub[EC_PUB_LEN])
+tx_out_t *tx_out_create(uint32_t quantity, uint8_t const pub[EC_PUB_LEN])
 {
 	tx_out_t *txOut = calloc(1, sizeof(tx_out_t));
 
 	if (!txOut)
 		return (NULL);
-	txOut->amount = amount;
+	txOut->quantity = quantity;
 	memcpy(txOut->pub, pub, sizeof(txOut->pub));
-	if (!sha256((void *)txOut, sizeof(txOut->amount) + sizeof(txOut->pub),
+	if (!sha256((void *)txOut, sizeof(txOut->quantity) + sizeof(txOut->pub),
 		    txOut->hash))
 	{
 		free(txOut);
